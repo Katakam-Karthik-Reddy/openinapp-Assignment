@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Sidebar from "./Components/Sidebar";
-import Tile from "./Components/Tile";
 import Chart from "./Components/Chart";
 import Addprofilepopup from "./Components/Addprofilepopup";
 import Image from "next/image";

@@ -5,7 +5,10 @@ import {
   LinearScale,
   Tooltip,
   Legend,
+  ChartOptions,
+  ChartData,
 } from "chart.js";
+import { ChartConfiguration } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
 interface props {
@@ -16,17 +19,16 @@ interface props {
     week4: { user: number; guest: number };
   };
 }
-
+interface BarProps {
+  data: ChartData<"bar">;
+  options: ChartOptions<"bar">;
+}
 Chartjs.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const Chart: React.FC<props> = ({ bardata }) => {
   const data = {
     labels: ["week 1", "week 2", "week 3", "week 4"],
     datasets: [
-      {
-        yAxisID: "y",
-        xAxisID: "x",
-      },
       {
         label: "User",
         data: [
@@ -51,7 +53,7 @@ const Chart: React.FC<props> = ({ bardata }) => {
           bardata.week4.guest,
         ],
         backgroundColor: "#EE8484",
-        barPercenage: "50%",
+        barPercenage: 0.5,
         borderWidth: 5,
         borderColor: "rgb(0,0,0,0)",
         barThickness: 45,
@@ -59,6 +61,7 @@ const Chart: React.FC<props> = ({ bardata }) => {
       },
     ],
   };
+
   const options = {
     elements: {
       bar: {
@@ -80,6 +83,7 @@ const Chart: React.FC<props> = ({ bardata }) => {
       },
     },
   };
+
   return (
     <div className="flex h-full w-full flex-row">
       <Bar data={data} options={options}></Bar>
