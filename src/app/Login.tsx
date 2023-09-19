@@ -87,7 +87,7 @@ const Loginpage: React.FC = () => {
             </button>
           </div>
           <div className="flex h-12 w-full flex-row items-center justify-center">
-            <p className="text-sm text-gray-400">Don't have an account?</p>
+            <p className="text-sm text-gray-400">{"Don't have an account?"}</p>
             <p className="text-sm text-blue-600">&nbsp;Register here</p>
           </div>
         </div>
