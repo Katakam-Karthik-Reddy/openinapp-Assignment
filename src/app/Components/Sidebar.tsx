@@ -33,7 +33,7 @@ const Sidebar: React.FC<props> = ({
         </p>
       </div>
 
-      <div className="my-12 text-white">
+      <div className="my-12 text-white 2xl:my-2">
         <div className="my-8 flex flex-row items-center justify-start">
           <Image src={dashboard_icon} alt="" className="h-4 w-4" />
           <Link href={""} className="ml-6 text-lg font-medium">

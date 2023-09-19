@@ -43,7 +43,7 @@ const Doughnutgraph: React.FC<props> = ({ doughnutdata }) => {
   };
 
   return (
-    <div className="h-[8rem] w-[8rem]">
+    <div className=" h-full w-fit">
       <Doughnut data={data} options={options}></Doughnut>{" "}
     </div>
   );

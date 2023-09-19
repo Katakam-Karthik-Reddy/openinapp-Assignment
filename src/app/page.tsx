@@ -19,7 +19,8 @@ import like_icon from "../../public/images/like_icon.png";
 import user_icon from "../../public/images/user_icon.png";
 
 function getdata(setData: React.Dispatch<React.SetStateAction<null>>) {
-  const apiUrl = "https://openinapp-assignment-eight.vercel.app/api/data";
+  // const apiUrl = "https://openinapp-assignment-eight.vercel.app/api/data";
+  const apiUrl = "http://localhost:3000/api/data";
   fetch(apiUrl)
     .then((response) => response.json())
     .then((responseData) => {
@@ -45,7 +46,6 @@ const Homepage: React.FC = () => {
   }
   const session = useSession();
   const [data, setData] = useState(null);
-  const [loadingdata, setloadingdata] = useState(false);
   useEffect(() => {
     getdata(setData);
   }, []);
@@ -53,13 +53,13 @@ const Homepage: React.FC = () => {
     <div className="relative h-full w-full bg-[#F8FAFF]">
       {data ? (
         <>
-          <div className="flex h-screen bg-[#F8FAFF] md:h-screen 2xl:mx-auto 2xl:h-screen 2xl:w-[75%] 2xl:flex-row 2xl:bg-[#F8FAFF]  2xl:p-3">
+          <div className="flex h-full bg-[#F8FAFF] md:h-screen 2xl:mx-auto 2xl:h-screen 2xl:w-[75%] 2xl:flex-row 2xl:bg-[#F8FAFF]  2xl:p-3">
             <Sidebar
               sidebarvisibility={sidebarvisibility}
               setsidebarvisibility={setsidebarvisibility}
             />
             <div className="flex h-full w-full flex-col 2xl:m-8 2xl:h-[95%] 2xl:w-full">
-              <div className="mx-6 my-4 flex h-6 items-center justify-between 2xl:w-[95%]">
+              <div className="mx-6 my-4 flex h-6 items-center justify-between 2xl:mt-12 2xl:w-[95%]">
                 <div className="flex flex-row items-center">
                   <div
                     className="mr-2 flex h-6 w-8 cursor-pointer items-center justify-center rounded-md bg-[#3F84F7] 2xl:hidden"
@@ -76,7 +76,7 @@ const Homepage: React.FC = () => {
                     <input
                       type="text"
                       placeholder="Search"
-                      className="h-8 w-28 rounded-lg px-4 text-xs font-[1px] md:w-40 2xl:w-48"
+                      className="hidden h-8 w-28 rounded-lg px-4 text-xs font-[1px] md:flex md:w-40 2xl:flex 2xl:w-48"
                     />
                     <Image
                       src={search_icon}
@@ -101,8 +101,8 @@ const Homepage: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className="mx-6 flex flex-row flex-wrap justify-between gap-4 2xl:justify-between 2xl:gap-0">
-                <div className="h-28 w-[22%] min-w-[14rem] rounded-2xl border-[2px] p-4 ">
+              <div className="mx-6 mb-4 flex flex-row flex-wrap justify-between gap-4 2xl:mb-10 2xl:w-[95%] 2xl:justify-between 2xl:gap-0">
+                <div className="h-28 w-[45%] rounded-2xl border-[2px] p-4 md:w-[22%] 2xl:w-[22%]">
                   <div className="my-1 flex h-7 w-7 items-center justify-center rounded-3xl bg-green-500">
                     <Image src={camara_icon} alt="" className="h-4 w-4" />
                   </div>
@@ -120,7 +120,7 @@ const Homepage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="h-28 w-[22%] min-w-[14rem] rounded-2xl border-[2px] p-4 ">
+                <div className="h-28 w-[45%] rounded-2xl border-[2px] p-4 md:w-[22%] 2xl:w-[22%]">
                   <div className="my-1 flex h-7 w-7 items-center justify-center rounded-3xl bg-[#DEBF85]">
                     <Image src={transcation_icon} alt="" className="h-4 w-4" />
                   </div>
@@ -140,7 +140,7 @@ const Homepage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="h-28 w-[22%] min-w-[14rem] rounded-2xl border-[2px] p-4 ">
+                <div className="h-28 w-[45%] rounded-2xl border-[2px] p-4 md:w-[22%] 2xl:w-[22%]">
                   <div className="my-1 flex h-7 w-7 items-center justify-center rounded-3xl bg-[#ECA4A4]">
                     <Image src={like_icon} alt="" className="h-4 w-4" />
                   </div>
@@ -158,7 +158,7 @@ const Homepage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="h-28 w-[22%] min-w-[14rem] rounded-2xl border-[2px] p-4 ">
+                <div className="h-28 w-[45%] rounded-2xl border-[2px] p-4 md:w-[22%] 2xl:w-[22%]">
                   <div className="my-1 flex h-7 w-7 items-center justify-center rounded-3xl bg-[#A9B0E5]">
                     <Image src={user_icon} alt="" className="h-4 w-4" />
                   </div>
@@ -177,7 +177,7 @@ const Homepage: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="mx-6 my-6 flex min-h-[21.5rem] max-w-full flex-col overflow-x-auto rounded-2xl border-[2px] border-gray-300 p-8 2xl:w-[95%]">
+              <div className="mx-6 mb-4 flex min-h-[21.5rem] max-w-full flex-col overflow-x-auto rounded-2xl border-[2px] border-gray-300 p-8 2xl:mb-6 2xl:w-[95%]">
                 <div className="flex w-full flex-row justify-between">
                   <div>
                     <p className="mb-2 font-bold leading-none">Activities</p>
@@ -196,14 +196,16 @@ const Homepage: React.FC = () => {
                 </div>
                 <Chart bardata={data["bardata"]} />
               </div>
-              <div className="mx-6 mb-8 mt-4 flex h-full flex-row justify-between">
-                <div className="flex h-full w-[48%] flex-col items-center justify-center rounded-2xl border-[2px] border-gray-300">
+              <div className="mx-6 mb-8 flex h-full flex-col justify-between md:flex-row 2xl:flex-row">
+                <div className="md:mx-h-[15rem] mb-4 flex h-[14rem] w-full flex-col items-center justify-center rounded-2xl border-[2px] border-gray-300 md:w-[48%] 2xl:h-[16rem] 2xl:w-[48%]">
                   <div className="flex w-[80%] flex-row justify-between">
                     <p className="mb-2 font-bold leading-none">Top Products</p>
                     <p className="text-xs font-light">May-June 2021</p>
                   </div>
                   <div className="flex h-[70%] w-full flex-row items-center justify-evenly">
-                    <Doughnutgraph doughnutdata={data["doughnutdata"]} />
+                    <div className="flex h-[75%] w-[50%] items-center justify-center">
+                      <Doughnutgraph doughnutdata={data["doughnutdata"]} />
+                    </div>
                     <div className="w-[40%]">
                       <div>
                         <div className="flex flex-row items-center">
@@ -244,7 +246,7 @@ const Homepage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex h-full w-[48%] items-center justify-center rounded-2xl border-[2px] border-gray-300">
+                <div className="md:m-h-[15rem] flex h-[14rem] w-full items-center justify-center rounded-2xl border-[2px] border-gray-300 md:w-[48%] 2xl:h-[16rem] 2xl:w-[48%]">
                   <div
                     className={` flex-col items-center justify-center ${
                       profilevisibility === false ? "flex" : "hidden"
