@@ -19,17 +19,15 @@ import like_icon from "../../public/images/like_icon.png";
 import user_icon from "../../public/images/user_icon.png";
 
 function getdata(setData: React.Dispatch<React.SetStateAction<null>>) {
-  useEffect(() => {
-    const apiUrl = "http://localhost:3000/api/data";
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((responseData) => {
-        setData(responseData["data"]);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+  const apiUrl = "https://openinapp-assignment-umber.vercel.app/api/data";
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((responseData) => {
+      setData(responseData["data"]);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
 }
 
 const Homepage: React.FC = () => {
@@ -47,7 +45,10 @@ const Homepage: React.FC = () => {
   }
   const session = useSession();
   const [data, setData] = useState(null);
-  getdata(setData);
+  const [loadingdata, setloadingdata] = useState(false);
+  useEffect(() => {
+    getdata(setData);
+  }, []);
   return (
     <div className="relative h-full w-full bg-[#F8FAFF]">
       {data ? (
