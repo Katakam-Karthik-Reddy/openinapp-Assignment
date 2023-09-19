@@ -19,8 +19,7 @@ import like_icon from "../../public/images/like_icon.png";
 import user_icon from "../../public/images/user_icon.png";
 
 function getdata(setData: React.Dispatch<React.SetStateAction<null>>) {
-  // const apiUrl = "https://openinapp-assignment-eight.vercel.app/api/data";
-  const apiUrl = "http://localhost:3000/api/data";
+  const apiUrl = "https://openinapp-assignment-eight.vercel.app/api/data";
   fetch(apiUrl)
     .then((response) => response.json())
     .then((responseData) => {
