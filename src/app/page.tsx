@@ -18,6 +18,20 @@ import transcation_icon from "../../public/images/transcationicon.png";
 import like_icon from "../../public/images/like_icon.png";
 import user_icon from "../../public/images/user_icon.png";
 
+function getdata(setData: React.Dispatch<React.SetStateAction<null>>) {
+  useEffect(() => {
+    const apiUrl = "http://localhost:3000/api/data";
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((responseData) => {
+        setData(responseData["data"]);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+}
+
 const Homepage: React.FC = () => {
   const [addprofilevisibility, setaddprofilevisibility] = useState(false);
   const [name, setname] = useState("");
@@ -33,19 +47,7 @@ const Homepage: React.FC = () => {
   }
   const session = useSession();
   const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const apiUrl = "http://localhost:3000/api/data";
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((responseData) => {
-        setData(responseData["data"]);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
-
+  getdata(setData);
   return (
     <div className="relative h-full w-full bg-[#F8FAFF]">
       {data ? (
